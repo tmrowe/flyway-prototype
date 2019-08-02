@@ -1,0 +1,5 @@
+CREATE TABLE "user" (
+    uuid UUID NOT NULL PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
