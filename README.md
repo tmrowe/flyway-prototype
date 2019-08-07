@@ -8,6 +8,8 @@ This prototype project demonstrates performing a database migration using Flyway
 * Localhost instance of Postgres running on port 5432. 
 * Create a database named `flyway`.
 * Create a user with username `flyway_migration` and password `123456` with super user privileges. 
+* The `pgcrypto` extension has been installed using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This allows
+us to use the `gen_random_uuid()` function to generate UUIDs.
 
 ### Command Line
 Migrations can be run from the command line using Flyways Command Line tool which can be downloaded
