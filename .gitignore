@@ -4,3 +4,6 @@
 
 # Build Output
 target/
+
+# Database
+data/
