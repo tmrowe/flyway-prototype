@@ -41,11 +41,6 @@ with no additional configuration.
 ## Flyway Commands
 A list of commands available through Flyway.
 
-__TODO:__
-This is currently specific to the Maven plugin. 
-
-- Check the feature set of the command line tools.
-
 ### Migrate
 This command will run all migrations from the current version the database is at all the way up to latest. If the 
 database is already up to date this command will do nothing. 
