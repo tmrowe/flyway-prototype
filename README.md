@@ -45,6 +45,9 @@ A list of commands available through Flyway.
 This command will run all migrations from the current version the database is at all the way up to latest. If the 
 database is already up to date this command will do nothing. 
 
+Since Postgres supports Data Definition Language (DDL) running in transactions any failed migration will be rolled back
+So our database will not be left in an inconsistent state.
+
 [Documentation](https://flywaydb.org/documentation/command/migrate) for this command can be found on the Flyway website.
 
 ### Clean
