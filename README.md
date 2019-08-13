@@ -107,7 +107,7 @@ mvn flyway:baseline
 [Documentation](https://flywaydb.org/documentation/command/baseline) for this command can be found on the Flyway website.
 
 ### Repair
-Repairs the schema history table.
+Repairs Flyway's `schema_version` table after a failed migration.
 
 ```
 mvn flyway:repair
