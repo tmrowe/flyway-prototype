@@ -38,81 +38,6 @@ us to use the `gen_random_uuid()` function to generate UUIDs.
 You can use [PG Admin](https://www.pgadmin.org/download/) by connecting to the database running in the container
 with no additional configuration. 
 
-## Flyway Commands
-A list of commands available through Flyway.
-
-### Migrate
-This command will run all migrations from the current version the database is at all the way up to latest. If the 
-database is already up to date this command will do nothing. 
-
-Since Postgres supports Data Definition Language (DDL) running in transactions any failed migration will be rolled back
-So our database will not be left in an inconsistent state.
-
-[Documentation](https://flywaydb.org/documentation/command/migrate) for this command can be found on the Flyway website.
-
-### Clean
-Drops all configured schemas and Flyways own `schema_version` table. Putting the database back into a clean state. 
-Very useful for development and test environments. 
-
-This command should **NEVER** be run on production environments as all data will be lost.
-
-```
-mvn flyway:clean
-```
-
-[Documentation](https://flywaydb.org/documentation/command/clean) for this command can be found on the Flyway website.
-
-### Info
-Prints out status information on all Flyway migrations. Including which have been run, which will be run when the 
-`migrate` command is used, any failures, and any rollbacks.
-
-```
-mvn flyway:info
-```
-
-[Documentation](https://flywaydb.org/documentation/command/info) for this command can be found on the
-Flyway website.
-
-### Validate
-Validates the available migrations against the applied migrations. This will detect migrations that cannot be run.
-
-```
-mvn flyway:validate
-```
-
-[Documentation](https://flywaydb.org/documentation/command/validate) for this command can be found on the Flyway website.
-
-### Undo
-Attempts to undo the most recently executed migration, or back to a target migration. This type of automatic rollback
-only works if we don't mind or will not lose data by dropping columns or tables. This generally means it is only useful
-for development.
-
-This is a paid feature and requires either a commercial or enterprise license to use.
-
-```
-mvn flyway:undo
-```
-
-[Documentation](https://flywaydb.org/documentation/command/undo) for this command can be found on the Flyway website.
-
-### Baseline
-Creates a starting point for an existing database that all future migrations can be run on top of. 
-
-```
-mvn flyway:baseline
-```
-
-[Documentation](https://flywaydb.org/documentation/command/baseline) for this command can be found on the Flyway website.
-
-### Repair
-Repairs Flyway's `schema_version` table after a failed migration.
-
-```
-mvn flyway:repair
-```
-
-[Documentation](https://flywaydb.org/documentation/command/repair) for this command can be found on the Flyway website.
-
 ## Migrations
 Flyway supports three different types of migration; versioned, repeatable, and undo.
 
@@ -176,6 +101,82 @@ R__add_users.sql
 The [naming convention](https://flywaydb.org/documentation/migrations#naming) required by Flyway is detailed on their 
 website.
 
+## Flyway Commands
+A list of commands available through Flyway.
+
+### Migrate
+This command will run all migrations from the current version the database is at all the way up to the latest. If the 
+database is already up to date this command will do nothing. 
+
+Since Postgres supports Data Definition Language (DDL) running in transactions any failed migration will be rolled back
+So our database will not be left in an inconsistent state.
+
+[Documentation](https://flywaydb.org/documentation/command/migrate) for this command can be found on the Flyway website.
+
+### Clean
+Drops all configured schemas including Flyway’s own `schema_version` table. Putting the database back into a clean 
+state. Very useful for development and test environments. 
+
+This command should **NEVER** be run on production environments as all data will be lost.
+
+```
+mvn flyway:clean
+```
+
+[Documentation](https://flywaydb.org/documentation/command/clean) for this command can be found on the Flyway website.
+
+### Info
+Prints out status information on all Flyway migrations. Including which have been run, which will be run when the 
+`migrate` command is used, any failures, and any rollbacks.
+
+```
+mvn flyway:info
+```
+
+[Documentation](https://flywaydb.org/documentation/command/info) for this command can be found on the
+Flyway website.
+
+### Validate
+Validates the available migrations against the applied migrations. This will detect migrations that cannot be run.
+
+```
+mvn flyway:validate
+```
+
+[Documentation](https://flywaydb.org/documentation/command/validate) for this command can be found on the Flyway website.
+
+### Undo
+Attempts to undo the most recently executed migration, or back to a target migration. This type of automatic rollback
+only works if we don't mind or will not lose data by dropping columns or tables. This generally means it is only useful
+for development.
+
+This is a paid feature and requires either a commercial or enterprise license to use.
+
+```
+mvn flyway:undo
+```
+
+[Documentation](https://flywaydb.org/documentation/command/undo) for this command can be found on the Flyway website.
+
+### Baseline
+This command can be used to create a starting point for an existing database that all future migrations can be run on 
+top of. 
+
+```
+mvn flyway:baseline
+```
+
+[Documentation](https://flywaydb.org/documentation/command/baseline) for this command can be found on the Flyway website.
+
+### Repair
+Repairs Flyway's `schema_version` table after a failed migration.
+
+```
+mvn flyway:repair
+```
+
+[Documentation](https://flywaydb.org/documentation/command/repair) for this command can be found on the Flyway website.
+
 ## Execution
 Flyway commands can be run via Flyway's:
 - [Command Line Tool](https://flywaydb.org/documentation/commandline/)
@@ -209,6 +210,3 @@ Example:
 mvn clean package
 java -jar target/flyway-1.0-SNAPSHOT.jar
 ```
-
-__TODO__
-- Process for fixing a bad migration. I.e. how to recover from a bad migration.
