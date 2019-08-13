@@ -117,8 +117,8 @@ Flyway supports three different types of migration; versioned, repeatable, and u
 Versioned migrations are scripts run in sequence that build up our database. 
 
 The sequence they run in is determined by the version number defined in their filename. They are only run 
-once and should not be modified after they have been run. Instead the required change should be made in another
-versioned migration.
+once and should not be modified after they have been run. Instead the required further changes should be made in 
+another versioned migration.
 
 Flyway documentation for [versioned migrations](https://flywaydb.org/documentation/migrations#versioned-migrations).
 
@@ -164,7 +164,7 @@ U1.1__drop_user_table.sql
 ```
 
 Repeatable migrations are prefixed with a `R` character, do not have a version specified, then two underscores,
-followed by a description, and a `.sql` file extension.
+followed by a description, and an `.sql` file extension.
 
 ```
 R__add_users.sql
