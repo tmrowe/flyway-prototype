@@ -80,6 +80,8 @@ The sequence they run in is determined by the version number defined in their fi
 once and should not be modified after they have been run. Instead the required further changes should be made in 
 another versioned migration.
 
+All versioned migrations are stored in the `src/main/resources/db/migration/versioned` directory.
+
 Flyway documentation for [versioned migrations](https://flywaydb.org/documentation/migrations#versioned-migrations).
 
 ### Undo Migrations
@@ -87,6 +89,8 @@ This is a paid feature and requires either a commercial or enterprise license to
 
 Flyway supports rollbacks via undo migrations. An undo migration is responsible for reversing the change
 made by a regular versioned migration. 
+
+All versioned migrations are stored in the `src/main/resources/db/migration/undo` directory.
 
 Flyway documentation for [undo migrations](https://flywaydb.org/getstarted/undo).
 
@@ -100,6 +104,8 @@ This is useful for things like:
 - Creating functions
 - Creating packages
 - Bulk data inserts
+
+All versioned migrations are stored in the `src/main/resources/db/migration/reoeatable` directory.
 
 Flyway documentation for [repeatable migrations](https://flywaydb.org/getstarted/repeatable).
 
@@ -136,7 +142,7 @@ website.
 ## Flyway Commands
 A list of commands available through Flyway.
 
-### Migrate
+### migrate
 This command will run all migrations from the current version the database is at all the way up to the latest. If the 
 database is already up to date this command will do nothing. 
 
@@ -145,7 +151,7 @@ So our database will not be left in an inconsistent state.
 
 [Documentation](https://flywaydb.org/documentation/command/migrate) for this command can be found on the Flyway website.
 
-### Clean
+### clean
 Drops all configured schemas including Flyway’s own `schema_version` table. Putting the database back into a clean 
 state. Very useful for development and test environments. 
 
@@ -157,7 +163,7 @@ mvn flyway:clean
 
 [Documentation](https://flywaydb.org/documentation/command/clean) for this command can be found on the Flyway website.
 
-### Info
+### info
 Prints out status information on all Flyway migrations. Including which have been run, which will be run when the 
 `migrate` command is used, any failures, and any rollbacks.
 
@@ -168,7 +174,7 @@ mvn flyway:info
 [Documentation](https://flywaydb.org/documentation/command/info) for this command can be found on the
 Flyway website.
 
-### Validate
+### validate
 Validates the available migrations against the applied migrations. This will detect migrations that cannot be run.
 
 ```
@@ -177,7 +183,7 @@ mvn flyway:validate
 
 [Documentation](https://flywaydb.org/documentation/command/validate) for this command can be found on the Flyway website.
 
-### Undo
+### undo
 Attempts to undo the most recently executed migration, or back to a target migration. This type of automatic rollback
 only works if we don't mind or will not lose data by dropping columns or tables. This generally means it is only useful
 for development.
@@ -190,7 +196,7 @@ mvn flyway:undo
 
 [Documentation](https://flywaydb.org/documentation/command/undo) for this command can be found on the Flyway website.
 
-### Baseline
+### baseline
 This command can be used to create a starting point for an existing database that all future migrations can be run on 
 top of. 
 
@@ -200,7 +206,7 @@ mvn flyway:baseline
 
 [Documentation](https://flywaydb.org/documentation/command/baseline) for this command can be found on the Flyway website.
 
-### Repair
+### repair
 Repairs Flyway's `schema_version` table after a failed migration.
 
 ```
