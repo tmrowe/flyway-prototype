@@ -1,6 +1,31 @@
 # Flyway Prototype
-This prototype project demonstrates performing database migrations using Flyway, and documents the features
-it provides. 
+This prototype project demonstrates performing database migrations using Flyway, and documents the features it provides. 
+
+## Prerequisites
+The following need to be installed on your system to run this project:
+
+- [Java Development Kit 8+](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+- [Maven](https://maven.apache.org/download.cgi)
+- [Docker](https://www.docker.com/get-started)
+
+## Quick Setup
+Steps to get the project running:
+
+- Download and install everything under prerequisites.
+- Run `docker-compose up`
+- Run `mvn flyway:migrate`
+
+You now have a running Postgres database that has all of the necessary configuration in place. The database migration 
+scripts listed under `scr/main/resources/db/migration` have been run. 
+
+You can now connect to the database using your preferred tool with these details:
+```
+Host: localhost
+Port: 5432
+User: flyway_migration
+Password: 123456
+Database: flyway
+```
 
 ## Postgres Setup
 
@@ -12,8 +37,6 @@ start again delete this directory.
 
 It is important to note that the setup scripts will only run on a clean instance. Therefore, if you need to rerun them
 you will first need to delete the `./data` directory and then run `docker-compose up`.
-
-In order to use [Docker](https://www.docker.com/get-started) you must have it installed on your host machine.
 
 #### Commands
 - To start the container detached: `docker-compose up -d`
