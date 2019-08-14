@@ -30,9 +30,10 @@ Setup instructions for a standalone postgres instance without using Docker.
 
 * Localhost instance of Postgres running on port 5432. 
 * Create a database named `flyway`.
-* Create a user with username `flyway_migration` and password `123456` with super user privileges. 
-* The `pgcrypto` extension has been installed using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This allows
-us to use the `gen_random_uuid()` function to generate UUIDs.
+* Create a user with username `flyway_migration` and password `123456`.
+* Make the `flyway_migration` user the owner of the `flyway` database.
+* Install the `pgcrypto` extension in the `flyway` database using `CREATE EXTENSION IF NOT EXISTS "pgcrypto";` This 
+allows us to use the `gen_random_uuid()` function to generate UUIDs.
 
 ## PG Admin
 You can use [PG Admin](https://www.pgadmin.org/download/) by connecting to the database running in the container
