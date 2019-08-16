@@ -1,9 +1,9 @@
 # IDE Files
-.idea
+/.idea
 *.iml
 
 # Build Output
-target/
+/target/
 
 # Database
-data/
+/data/
